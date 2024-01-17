@@ -42,13 +42,11 @@ async function defaultCallback(files: FileList) {
   return await Promise.all(imgs.map(img => readImageAsBase64(img)))
 }
 
-const remoteUploadConfig = $ctx(defaultCallback, 'remoteUploadConfig')
+export const remoteUploadConfig = $ctx(defaultCallback, 'remoteUploadConfig')
 
-export function remoteUploader(ctx: Ctx, callback: (files: FileList) => Promise<Array<{ src: string, alt: string }>>) {
-  ctx.set(remoteUploadConfig.key, callback)
-
+export function remoteUploader(ctx: Ctx) {
   return async (files: FileList, schema: Schema) => {
-    const images = await callback(files)
+    const images = await ctx.get(remoteUploadConfig.key)(files)
 
     return images.map(({ src, alt }) => {
       return schema.nodes.image.createAndFill({
