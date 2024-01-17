@@ -1,6 +1,6 @@
 {
   "name": "@s2nc/milkdown-plugin-upload",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "remote upload plugin for milkdown.",
   "keywords": [
     "milkdown",
