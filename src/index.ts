@@ -4,7 +4,7 @@ import { readImageAsBase64, uploadConfig, uploadPlugin } from '@milkdown/plugin-
 import type { Ctx, MilkdownPlugin } from '@milkdown/ctx'
 import type { Schema } from '@milkdown/prose/model'
 
-const remoteUploadCommand = $command(
+export const remoteUploadCommand = $command(
   'RemoteUpload',
   // @ts-expect-error
   ctx => files => async (state, dispatch) => {
